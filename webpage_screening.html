@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Psychedelic-Assisted Psychotherapy Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('medium-logo.png'); /* Replace with your actual image path */
+            background-size: cover;                  /* Cover the entire screen */
+            background-position: center;             /* Center the image */
+            background-repeat: no-repeat;            /* Prevent image repetition */
+            background-attachment: fixed;            /* Fixed background for a parallax effect */
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .cta-button {
+            background-color: #6366f1;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            /*font-size: 1.125rem;*/
+            font-weight: 600;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #4f46e5;
+        }
+        .language-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            width: 100%;
+            /*max-width: 800px; !* Adjust as necessary *!*/
+        }
+        .section-header {
+            background-color: #f3e5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6a1b9a;
+        }
+        .main-title-wrapper {
+            background: white;
+            border-radius: 0.375rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-7xl mx-auto p-6 min-h-screen flex flex-col justify-center items-center">
+        <!-- Wrap the h1 in a div for styling -->
+        <div class="main-title-wrapper">
+            <h1 id="main-title" class="text-3xl font-bold text-indigo-600">AI & Psychedelic-Assisted Psychotherapy Survey</h1>
+        </div>
+
+        <!-- Section en Français -->
+        <section id="section-fr" class="language-section mb-8" style="display: none;">
+            <div class="section-header">Participez à notre enquête et peut-être gagnez 50euros!</div>
+            <p class="text-2xl text-gray-600 leading-relaxed mb-6">
+                Participez à notre enquête sur l'intégration de l'intelligence artificielle dans la psychothérapie assistée par les psychédéliques. Vos perspectives contribueront à façonner les innovations futures et les pratiques éthiques dans ce domaine novateur. Prenez quelques minutes pour partager vos opinions et expériences.
+            </p>
+            <p class="text-2xl text-gray-600 leading-relaxed mb-6">
+                Votre participation est précieuse et trois participants seront sélectionnés au hasard pour gagner un prix de 50euros chacun.
+            </p>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="cta-button text-2xl">Participez Maintenant</button>
+            </div>
+        </section>
+
+        <!-- English Section -->
+        <section id="section-en" class="language-section mb-8" style="display: none;">
+            <div class="section-header">Join Our Survey and maybe win 50euros!</div>
+            <p class="text-2xl text-gray-600 leading-relaxed mb-6">
+                Join us in exploring how artificial intelligence can enhance psychedelic-assisted psychotherapy. Your insights will help shape future innovations and ethical practices in this groundbreaking field. Take a few minutes to share your thoughts and experiences.
+            </p>
+            <p class="text-2xl text-gray-600 leading-relaxed mb-6">
+                Your participation is valuable, and three participants will be randomly selected to win a prize of 50euros each.
+            </p>
+            <button class="cta-button">Share Your Thoughts</button>
+        </section>
+
+        <!-- Sektion auf Deutsch -->
+        <section id="section-de" class="language-section" style="display: none;">
+            <div class="section-header">Nehmen Sie an unserer Umfrage teil und gewinnen Sie vielleicht 50euros!</div>
+            <p class="text-2xl text-gray-600 leading-relaxed mb-6">
+                Nehmen Sie an unserer Umfrage zur Integration künstlicher Intelligenz in die psychedelisch assistierte Psychotherapie teil. Ihre Einsichten werden dazu beitragen, zukünftige Innovationen und ethische Praktiken in diesem wegweisenden Bereich zu gestalten. Nehmen Sie sich ein paar Minuten Zeit, um Ihre Gedanken und Erfahrungen mitzuteilen.
+            </p>
+            <p class="text-2xl text-gray-600 leading-relaxed mb-6">
+                Ihre Teilnahme ist wertvoll, und drei Teilnehmer werden zufäll ausgewählt, um jeweils einen Preis von 50euros zu gewinnen.
+            </p>
+            <button class="cta-button">Teilen Sie Ihre Gedanken</button>
+        </section>
+    </div>
+
+    <script>
+        // Fetch the user's location data
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                // Extract the country code
+                const country = data.country_code;
+                const mainTitle = document.getElementById('main-title');
+
+                // Determine the language based on the country code
+                if (country === 'FR' || country === 'BE' || country === 'CH') {
+                    // Show French section
+                    document.getElementById('section-fr').style.display = 'block';
+                    // Update title and main header in French
+                    document.title = "Enquête sur l'IA et la Psychothérapie Assistée par les Psychédéliques";
+                    mainTitle.textContent = "Enquête sur l'IA et la Psychothérapie Assistée par les Psychédéliques";
+                } else if (country === 'DE' || country === 'AT' || country === 'CH') {
+                    // Show German section
+                    document.getElementById('section-de').style.display = 'block';
+                    // Update title and main header in German
+                    document.title = "Umfrage zur KI und Psychotherapie mit psychedelischer Unterstützung";
+                    mainTitle.textContent = "Umfrage zur KI und Psychotherapie mit psychedelischer Unterstützung";
+                } else {
+                    // Default to English section
+                    document.getElementById('section-en').style.display = 'block';
+                    // Update title and main header in English
+                    document.title = "AI & Psychedelic-Assisted Psychotherapy Survey";
+                    mainTitle.textContent = "AI & Psychedelic-Assisted Psychotherapy Survey";
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching location:', error);
+                // Default to English section if there is an error
+                document.getElementById('section-en').style.display = 'block';
+                // Update title and main header in English
+                document.title = "AI & Psychedelic-Assisted Psychotherapy Survey";
+                document.getElementById('main-title').textContent = "AI & Psychedelic-Assisted Psychotherapy Survey";
+            });
+    </script>
+</body>
+</html>
